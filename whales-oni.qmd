@@ -21,6 +21,11 @@ bluewhales <- NULL
 
 ```
 
+```{r}
+#| label: test-setup
+. = ottr::check("tests/setup.R")
+```
+
 ## Pivot longer
 
 Inspect `oni`. Notice the months are in columns. Pivot it longer and call the new variable `oni_long`. The result should have columns named `month` and `oni`.
@@ -33,9 +38,14 @@ You can pivot all columns *except* one using minus (`-`) before the column you w
 
 ```{r}
 # Replace NULL in the following lines to pivot oni longer
-oni_long <- NULL |> 
+oni_long <- NULL |>
   mutate(month = as.numeric(month))
 
+```
+
+```{r}
+#| label: test-ex1
+. = ottr::check("tests/ex1.R")
 ```
 
 ## Extract date components
@@ -54,11 +64,16 @@ You're using multiple grouping columns here, so make sure to use `.groups = "dro
 ```{r}
 # Replace the NULLs in the lines below to create monthly_whales according to the
 # directions above.
-monthly_whales <- bluewhales |> 
-  mutate(NULL) |> 
-  group_by(NULL) |> 
+monthly_whales <- bluewhales |>
+  mutate(NULL) |>
+  group_by(NULL) |>
   summarize(NULL)
 
+```
+
+```{r}
+#| label: test-ex2
+. = ottr::check("tests/ex2.R")
 ```
 
 ## Join
@@ -67,9 +82,14 @@ Now you have two data frames, `oni_long` and `monthly_whales`, with both year an
 
 ```{r}
 # Replace NULLs in the following lines to create oni_whales
-oni_whales <- left_join(NULL, 
-                        NULL, 
+oni_whales <- left_join(NULL,
+                        NULL,
                         by = NULL)
+```
+
+```{r}
+#| label: test-ex3
+. = ottr::check("tests/ex3.R")
 ```
 
 ## Visualize
@@ -79,6 +99,11 @@ Create a scatter plot of ONI vs the whale count.
 ```{r}
 # Use ggplot to create a scatter plot of the two species.
 
+```
+
+```{r}
+#| label: test-ex4
+. = ottr::check("tests/ex4.R")
 ```
 
 **Q1: In one sentence, describe the relationship between ONI and whale counts depicted in the figure.**

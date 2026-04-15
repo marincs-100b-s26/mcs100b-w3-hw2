@@ -22,6 +22,11 @@ bluewhales <- read_csv("data/bluewhales.csv")
 
 ```
 
+```{r}
+#| label: test-setup
+. = ottr::check("tests/setup.R")
+```
+
 ## Pivot longer
 
 Inspect `oni`. Notice the months are in columns. Pivot it longer and call the new variable `oni_long`. The result should have columns named `month` and `oni`.
@@ -40,6 +45,11 @@ oni_long <- pivot_longer(oni,
                          values_to = "oni") |> 
   mutate(month = as.numeric(month))
 
+```
+
+```{r}
+#| label: test-ex1
+. = ottr::check("tests/ex1.R")
 ```
 
 ## Extract date components
@@ -66,6 +76,11 @@ monthly_whales <- bluewhales |>
 
 ```
 
+```{r}
+#| label: test-ex2
+. = ottr::check("tests/ex2.R")
+```
+
 ## Join
 
 Now you have two data frames, `oni_long` and `monthly_whales`, with both year and month columns. These shared columns are the *keys* for a join. Join the two data frames together on both keys. Your resulting data frame should have columns `year`, `month`, `oni`, and `n_whales`. Call it `oni_whales`.
@@ -77,6 +92,11 @@ oni_whales <- left_join(oni_long,
                         by = c("year", "month"))
 ```
 
+```{r}
+#| label: test-ex3
+. = ottr::check("tests/ex3.R")
+```
+
 ## Visualize
 
 Create a scatter plot of ONI vs the whale count.
@@ -86,6 +106,11 @@ Create a scatter plot of ONI vs the whale count.
 ggplot(oni_whales, aes(oni, n_whales)) +
   geom_point()
 
+```
+
+```{r}
+#| label: test-ex4
+. = ottr::check("tests/ex4.R")
 ```
 
 **Q1: In one sentence, describe the relationship between ONI and whale counts depicted in the figure.**
